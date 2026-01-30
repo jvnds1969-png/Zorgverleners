@@ -1,3 +1,19 @@
+:root{
+  --brand:#ff385c;
+  --brand-dark:#e61e4d;
+  --text:#1e293b;
+  --bg:#f8fafc;
+}
+
+body{ background:var(--bg); color:var(--text); }
+
+.logo-icon{ background:var(--brand); }
+.btn-primary{ background:var(--brand); }
+.btn-primary:hover{ background:var(--brand-dark); }
+.btn-outline{ border-color:var(--brand); color:var(--brand); }
+.btn-outline:hover{ background:var(--brand); }
+.nav-links a:hover{ color:var(--brand); }
+
 /* =========================
    Zorgstart Marketplace CSS
    robuust + mooi + correct

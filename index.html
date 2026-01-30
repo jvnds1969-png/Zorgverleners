@@ -8,7 +8,7 @@
   <style>
     /* =========================
        Zorgstart Marketplace
-       (clean + mooi + consistent)
+       opgeschoond + consistent
        ========================= */
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@
     /* Header */
     header{
       background:#ff385c;
-      color:white;
+      color:#fff;
       padding:1rem 2rem;
       box-shadow:0 2px 8px rgba(0,0,0,0.1);
     }
@@ -43,7 +43,7 @@
     }
 
     .logo-text{
-      font-size:2.05rem;      /* groter zoals gevraagd */
+      font-size:2.05rem;
       font-weight:800;
       letter-spacing:-0.02em;
     }
@@ -76,12 +76,12 @@
     }
 
     .btn-host{
-      background:white;
+      background:#fff;
       color:#ff385c;
       border:none;
       padding:0.7rem 1.6rem;
       border-radius:999px;
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
       transition:transform 0.15s ease, box-shadow 0.15s ease;
       box-shadow:0 2px 8px rgba(0,0,0,0.12);
@@ -96,7 +96,7 @@
     /* Hero */
     .hero{
       background:linear-gradient(135deg,#ff385c,#e61e4d);
-      color:white;
+      color:#fff;
       padding:3.5rem 2rem 2.5rem;
       text-align:center;
     }
@@ -114,7 +114,7 @@
       display:grid;
       grid-template-columns:1.2fr 1.2fr 1fr auto;
       gap:0.6rem;
-      background:white;
+      background:#fff;
       padding:0.55rem;
       border-radius:999px;
       align-items:center;
@@ -136,14 +136,15 @@
 
     .btn-search{
       background:linear-gradient(135deg,#ff385c,#e61e4d);
-      color:white;
+      color:#fff;
       border:none;
       padding:1rem 2.1rem;
       border-radius:999px;
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
       box-shadow:0 10px 20px rgba(255,56,92,0.25);
       transition:transform 0.15s ease, box-shadow 0.15s ease;
+      white-space:nowrap;
     }
 
     .btn-search:hover{
@@ -164,7 +165,7 @@
 
     /* Filters */
     .filters{
-      background:white;
+      background:#fff;
       padding:1.4rem;
       border-radius:14px;
       height:fit-content;
@@ -212,10 +213,9 @@
 
     /* Card */
     .card{
-      background:white;
+      background:#fff;
       border-radius:18px;
       overflow:hidden;
-      cursor:pointer;
       box-shadow:0 2px 10px rgba(0,0,0,0.1);
       transition:transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -229,11 +229,11 @@
       height:210px;
       position:relative;
       overflow:hidden;
-      background:#eee;
+      background:#eaeaea;
     }
 
-    /* Foto's mooi schalen */
-    .card-img > img.photo{
+    /* ROBUUST: alle afbeeldingen in card-img, behalve group-logo */
+    .card-img img:not(.group-logo){
       width:100%;
       height:100%;
       object-fit:cover;
@@ -242,11 +242,11 @@
       transition:transform 0.25s ease;
     }
 
-    .card:hover .card-img > img.photo{
+    .card:hover .card-img img:not(.group-logo){
       transform:scale(1.07);
     }
 
-    /* Donkere overlay voor leesbaarheid badges */
+    /* Overlay voor leesbaarheid badges */
     .card-img::after{
       content:"";
       position:absolute;
@@ -264,10 +264,11 @@
       padding:0.42rem 0.82rem;
       border-radius:999px;
       font-size:0.78rem;
-      font-weight:700;
+      font-weight:800;
       z-index:3;
       box-shadow:0 2px 8px rgba(0,0,0,0.18);
       backdrop-filter:saturate(140%) blur(6px);
+      white-space:nowrap;
     }
 
     .badge{
@@ -279,13 +280,13 @@
     .badge-top{
       right:0.85rem;
       background:rgba(255,56,92,0.95);
-      color:white;
+      color:#fff;
     }
 
     .badge-new{
       right:0.85rem;
       background:rgba(0,166,153,0.95);
-      color:white;
+      color:#fff;
     }
 
     /* Groepslogo (Altrio) */
@@ -302,29 +303,31 @@
       box-shadow:0 2px 10px rgba(0,0,0,0.18);
     }
 
-    /* Card content */
+    /* Content */
+    .card-content{ padding:1rem 1rem 0.6rem; }
+
     .card h3{
-      padding:1rem 1rem 0.45rem;
       font-size:1.15rem;
       letter-spacing:-0.01em;
+      margin-bottom:0.25rem;
     }
 
     .card p{
-      padding:0 1rem 0.45rem;
       color:#717171;
       font-size:0.93rem;
+      margin-bottom:0.45rem;
     }
 
     .rating{
-      color:#222!important;
-      font-weight:700;
+      color:#222;
+      font-weight:800;
     }
 
     .tags{
-      padding:0.25rem 1rem 1rem;
       display:flex;
       gap:0.5rem;
       flex-wrap:wrap;
+      margin-top:0.35rem;
     }
 
     .tags span{
@@ -332,7 +335,7 @@
       padding:0.32rem 0.72rem;
       border-radius:999px;
       font-size:0.78rem;
-      font-weight:700;
+      font-weight:800;
       color:#333;
     }
 
@@ -348,19 +351,18 @@
 
     .price{
       font-size:1.05rem;
-      font-weight:800;
+      font-weight:900;
       color:#222;
-      text-transform:none;
       white-space:nowrap;
     }
 
     .footer button{
       background:#ff385c;
-      color:white;
+      color:#fff;
       border:none;
       padding:0.65rem 1.15rem;
       border-radius:10px;
-      font-weight:800;
+      font-weight:900;
       cursor:pointer;
       transition:transform 0.15s ease, box-shadow 0.15s ease;
       box-shadow:0 10px 20px rgba(255,56,92,0.22);
@@ -373,12 +375,12 @@
     }
 
     /* Responsive */
-    @media (max-width: 980px){
+    @media (max-width:980px){
       .marketplace-grid{ grid-template-columns:1fr; }
       .filters{ position:relative; top:auto; }
     }
 
-    @media (max-width: 720px){
+    @media (max-width:720px){
       header{ padding:1rem 1rem; }
       .marketplace-grid{ padding:0 1rem; }
 
@@ -411,7 +413,7 @@
 
       <div class="header-actions">
         <span class="lang-indicator" title="Taal van de interface">🇧🇪 Nederlands</span>
-        <button class="btn-host">Ik wil mij ook registreren als zorg- of dienstverlener</button>
+        <button class="btn-host" type="button">Word zorgverlener</button>
       </div>
     </div>
   </header>
@@ -423,7 +425,7 @@
       <input type="text" placeholder="📍 Postcode of gemeente">
       <input type="text" placeholder="🔍 Type zorg of dienst">
       <input type="text" placeholder="🌍 Taal / cultuur">
-      <button class="btn-search">Zoeken</button>
+      <button class="btn-search" type="button">Zoeken</button>
     </div>
   </section>
 
@@ -442,137 +444,90 @@
       </div>
     </aside>
 
-    <div class="listings">
-      <!-- Card 1: Thuisverpleegkundige + Altrio logo -->
-      <div class="card">
+    <section class="listings" aria-label="Aanbieders">
+      <!-- Card 1 -->
+      <article class="card">
         <div class="card-img">
-          <img class="photo"
-               src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
-               alt="Thuisverpleegkundige aan huis">
+          <img
+            src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
+            alt="Thuisverpleegkundige aan huis">
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-top">Top</span>
 
-          <!-- Pas het pad aan naar jouw echte logo-bestand (SVG of PNG) -->
-          <img class="group-logo"
-               src="images/logos/altrio.svg"
-               alt="Altrio"
-               title="Aangesloten bij Altrio Thuisverpleging">
+          <img
+            class="group-logo"
+            src="images/logos/altrio.svg"
+            alt="Altrio"
+            title="Aangesloten bij Altrio Thuisverpleging"
+            onerror="this.style.display='none'">
         </div>
 
-        <h3>Sarah Peeters</h3>
-        <p class="rating">⭐ 4.9 (127)</p>
-        <p>Thuisverpleegkundige • 10 jaar</p>
-        <p>Onmiddellijke opstart mogelijk</p>
+        <div class="card-content">
+          <h3>Sarah Peeters</h3>
+          <p class="rating">⭐ 4.9 (127)</p>
+          <p>Thuisverpleegkundige • 10 jaar</p>
+          <p>Onmiddellijke opstart mogelijk</p>
 
-        <div class="tags"><span>NL</span><span>FR</span></div>
+          <div class="tags"><span>NL</span><span>FR</span></div>
+        </div>
 
         <div class="footer">
-          <span class="price">geconventioneerd</span>
-          <button>Contact</button>
+          <span class="price">Geconventioneerd</span>
+          <button type="button">Contact</button>
         </div>
-      </div>
+      </article>
 
-      <!-- Card 2: Kinesist -->
-      <div class="card">
+      <!-- Card 2 -->
+      <article class="card">
         <div class="card-img">
-          <img class="photo"
-               src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
-               alt="Kinesitherapeut tijdens behandeling">
+          <img
+            src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
+            alt="Kinesitherapeut tijdens behandeling">
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-top">Komt aan huis</span>
         </div>
 
-        <h3>Mohamed El Amrani</h3>
-        <p class="rating">⭐ 4.8 (89)</p>
-        <p>Kinesitherapeut • 7 jaar</p>
+        <div class="card-content">
+          <h3>Mohamed El Amrani</h3>
+          <p class="rating">⭐ 4.8 (89)</p>
+          <p>Kinesitherapeut • 7 jaar</p>
 
-        <div class="tags"><span>AR</span><span>NL</span></div>
+          <div class="tags"><span>AR</span><span>NL</span></div>
+        </div>
 
         <div class="footer">
-          <span class="price">niet geconventioneerd</span>
-          <button>Contact</button>
+          <span class="price">Niet geconventioneerd</span>
+          <button type="button">Contact</button>
         </div>
-      </div>
+      </article>
 
-      <!-- Card 3: Maaltijd -->
-      <div class="card">
+      <!-- Card 3 -->
+      <article class="card">
         <div class="card-img">
-          <img class="photo"
-               src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80"
-               alt="Warme maaltijd aan huis">
+          <img
+            src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80"
+            alt="Warme maaltijd aan huis">
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-new">Nieuw</span>
         </div>
 
-        <h3>Delimeal</h3>
-        <p class="rating">⭐ 5.0 (23)</p>
-        <p>Warme maaltijd aan huis</p>
+        <div class="card-content">
+          <h3>Delimeal</h3>
+          <p class="rating">⭐ 5.0 (23)</p>
+          <p>Warme maaltijd aan huis</p>
 
-        <div class="tags"><span>NL</span><span>PL</span></div>
+          <div class="tags"><span>NL</span><span>PL</span></div>
+        </div>
 
         <div class="footer">
           <span class="price">€28/u</span>
-          <button>Contact</button>
+          <button type="button">Contact</button>
         </div>
-      </div>
-    </div>
+      </article>
+    </section>
   </main>
 </body>
 </html>
-<div class="card">
-  <div class="card-img">
-    <img
-      src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
-      alt="Kinesitherapeut tijdens behandeling">
-
-    <span class="badge">✓ Geverifieerd</span>
-    <span class="badge-top">Komt aan huis</span>
-  </div>
-
-  <h3>Mohamed El Amrani</h3>
-  <p class="rating">⭐ 4.8 (89)</p>
-  <p>Kinesitherapeut • 7 jaar</p>
-
-  <div class="tags"><span>AR</span><span>NL</span></div>
-
-  <div class="footer">
-    <span class="price">niet geconventioneerd</span>
-    <button>Contact</button>
-  </div>
-</div>
-<div class="card">
-  <div class="card-img">
-    <img
-      src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
-      alt="Thuisverpleegkundige aan huis">
-
-    <span class="badge">✓ Geverifieerd</span>
-    <span class="badge-top">Top</span>
-
-    <img
-      class="group-logo"
-      src="images/logos/altrio.svg"
-      alt="Altrio"
-      title="Aangesloten bij Altrio Thuisverpleging">
-  </div>
-
-  <h3>Sarah Peeters</h3>
-  <p class="rating">⭐ 4.9 (127)</p>
-  <p>Thuisverpleegkundige • 10 jaar</p>
-  <p>Onmiddellijke opstart mogelijk</p>
-
-  <div class="tags"><span>NL</span><span>FR</span></div>
-
-  <div class="footer">
-    <span class="price">geconventioneerd</span>
-    <button>Contact</button>
-  </div>
-</div>
-
-
-
-
-

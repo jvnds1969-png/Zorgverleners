@@ -357,3 +357,22 @@ header {
     width: 100%;
   }
 }
+.back-container{
+  max-width:1100px;
+  margin:1rem auto 0;
+  padding:0 2rem;
+}
+
+.back-link{
+  display:inline-block;
+  text-decoration:none;
+  font-size:0.9rem;
+  font-weight:600;
+  color:var(--muted);
+  transition:color .15s ease, transform .15s ease;
+}
+
+.back-link:hover{
+  color:var(--brand);
+  transform:translateX(-2px);
+}

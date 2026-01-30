@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart Marketplace</title>
+
+  <style>
+    /* =========================
+       Zorgstart Marketplace
+       (clean + mooi + consistent)
+       ========================= */
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#f7f7f7;
+      color:#222;
+    }
+
+    /* Header */
+    header{
+      background:#ff385c;
+      color:white;
+      padding:1rem 2rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .container{
+      max-width:1400px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+    }
+
+    .logo{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .logo-text{
+      font-size:2.05rem;      /* groter zoals gevraagd */
+      font-weight:800;
+      letter-spacing:-0.02em;
+    }
+
+    .marketplace{
+      font-size:0.72rem;
+      opacity:0.92;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+      margin-top:0.15rem;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .lang-indicator{
+      display:flex;
+      align-items:center;
+      gap:0.4rem;
+      font-size:0.9rem;
+      font-weight:600;
+      opacity:0.95;
+      cursor:default;
+      white-space:nowrap;
+    }
+
+    .btn-host{
+      background:white;
+      color:#ff385c;
+      border:none;
+      padding:0.7rem 1.6rem;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+      white-space:nowrap;
+    }
+
+    .btn-host:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(135deg,#ff385c,#e61e4d);
+      color:white;
+      padding:3.5rem 2rem 2.5rem;
+      text-align:center;
+    }
+
+    .hero h2{
+      font-size:2.6rem;
+      margin-bottom:1.5rem;
+      letter-spacing:-0.02em;
+    }
+
+    /* Search */
+    .search-bar{
+      max-width:920px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.2fr 1.2fr 1fr auto;
+      gap:0.6rem;
+      background:white;
+      padding:0.55rem;
+      border-radius:999px;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .search-bar input{
+      padding:1rem 1.05rem;
+      border:none;
+      font-size:1rem;
+      outline:none;
+      background:transparent;
+      border-radius:999px;
+    }
+
+    .search-bar input:focus{
+      background:#f7f7f7;
+    }
+
+    .btn-search{
+      background:linear-gradient(135deg,#ff385c,#e61e4d);
+      color:white;
+      border:none;
+      padding:1rem 2.1rem;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 10px 20px rgba(255,56,92,0.25);
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-search:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 28px rgba(255,56,92,0.32);
+    }
+
+    /* Layout */
+    .marketplace-grid{
+      max-width:1400px;
+      margin:2rem auto;
+      padding:0 2rem;
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:2rem;
+      align-items:start;
+    }
+
+    /* Filters */
+    .filters{
+      background:white;
+      padding:1.4rem;
+      border-radius:14px;
+      height:fit-content;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      position:sticky;
+      top:1.2rem;
+    }
+
+    .filters h3{
+      font-size:1rem;
+      margin-bottom:0.2rem;
+    }
+
+    .filter-group{
+      margin-top:1.2rem;
+      padding-top:1.2rem;
+      border-top:1px solid #f0f0f0;
+    }
+
+    .filter-group h4{
+      margin-bottom:0.8rem;
+      font-size:0.9rem;
+      color:#333;
+    }
+
+    .filter-group label{
+      display:flex;
+      align-items:center;
+      gap:0.55rem;
+      margin:0.55rem 0;
+      font-size:0.92rem;
+      color:#444;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .filter-group input{ accent-color:#ff385c; }
+
+    /* Listings */
+    .listings{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:1.6rem;
+    }
+
+    /* Card */
+    .card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      cursor:pointer;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+      transition:transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 16px 34px rgba(0,0,0,0.16);
+    }
+
+    .card-img{
+      height:210px;
+      position:relative;
+      overflow:hidden;
+      background:#eee;
+    }
+
+    /* Foto's mooi schalen */
+    .card-img > img.photo{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.02);
+      transition:transform 0.25s ease;
+    }
+
+    .card:hover .card-img > img.photo{
+      transform:scale(1.07);
+    }
+
+    /* Donkere overlay voor leesbaarheid badges */
+    .card-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.0) 70%);
+      pointer-events:none;
+    }
+
+    /* Badges */
+    .badge,
+    .badge-top,
+    .badge-new{
+      position:absolute;
+      top:0.85rem;
+      padding:0.42rem 0.82rem;
+      border-radius:999px;
+      font-size:0.78rem;
+      font-weight:700;
+      z-index:3;
+      box-shadow:0 2px 8px rgba(0,0,0,0.18);
+      backdrop-filter:saturate(140%) blur(6px);
+    }
+
+    .badge{
+      left:0.85rem;
+      background:rgba(255,255,255,0.92);
+      color:#16a085;
+    }
+
+    .badge-top{
+      right:0.85rem;
+      background:rgba(255,56,92,0.95);
+      color:white;
+    }
+
+    .badge-new{
+      right:0.85rem;
+      background:rgba(0,166,153,0.95);
+      color:white;
+    }
+
+    /* Groepslogo (Altrio) */
+    .group-logo{
+      position:absolute;
+      bottom:0.85rem;
+      right:0.85rem;
+      height:34px;
+      width:auto;
+      background:rgba(255,255,255,0.95);
+      padding:0.28rem 0.5rem;
+      border-radius:10px;
+      z-index:3;
+      box-shadow:0 2px 10px rgba(0,0,0,0.18);
+    }
+
+    /* Card content */
+    .card h3{
+      padding:1rem 1rem 0.45rem;
+      font-size:1.15rem;
+      letter-spacing:-0.01em;
+    }
+
+    .card p{
+      padding:0 1rem 0.45rem;
+      color:#717171;
+      font-size:0.93rem;
+    }
+
+    .rating{
+      color:#222!important;
+      font-weight:700;
+    }
+
+    .tags{
+      padding:0.25rem 1rem 1rem;
+      display:flex;
+      gap:0.5rem;
+      flex-wrap:wrap;
+    }
+
+    .tags span{
+      background:#f7f7f7;
+      padding:0.32rem 0.72rem;
+      border-radius:999px;
+      font-size:0.78rem;
+      font-weight:700;
+      color:#333;
+    }
+
+    /* Footer */
+    .footer{
+      padding:0.95rem 1rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid #eee;
+      gap:0.8rem;
+    }
+
+    .price{
+      font-size:1.05rem;
+      font-weight:800;
+      color:#222;
+      text-transform:none;
+      white-space:nowrap;
+    }
+
+    .footer button{
+      background:#ff385c;
+      color:white;
+      border:none;
+      padding:0.65rem 1.15rem;
+      border-radius:10px;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow:0 10px 20px rgba(255,56,92,0.22);
+      white-space:nowrap;
+    }
+
+    .footer button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 28px rgba(255,56,92,0.28);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .marketplace-grid{ grid-template-columns:1fr; }
+      .filters{ position:relative; top:auto; }
+    }
+
+    @media (max-width: 720px){
+      header{ padding:1rem 1rem; }
+      .marketplace-grid{ padding:0 1rem; }
+
+      .hero{ padding:2.8rem 1rem 2rem; }
+      .hero h2{ font-size:2.1rem; }
+
+      .search-bar{
+        grid-template-columns:1fr;
+        border-radius:18px;
+        padding:0.75rem;
+      }
+
+      .btn-search{
+        width:100%;
+        border-radius:14px;
+      }
+
+      .listings{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <span class="logo-text">🏠 Zorgstart</span>
+        <span class="marketplace">Marketplace</span>
+      </div>
+
+      <div class="header-actions">
+        <span class="lang-indicator" title="Taal van de interface">🇧🇪 Nederlands</span>
+        <button class="btn-host">Word zorgverlener</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>Vind je zorg- of dienstverlener</h2>
+
+    <div class="search-bar">
+      <input type="text" placeholder="📍 Postcode of gemeente">
+      <input type="text" placeholder="🔍 Type zorg of dienst">
+      <input type="text" placeholder="🌍 Taal / cultuur">
+      <button class="btn-search">Zoeken</button>
+    </div>
+  </section>
+
+  <main class="marketplace-grid">
+    <aside class="filters">
+      <h3>Filters</h3>
+
+      <div class="filter-group">
+        <h4>Type</h4>
+        <label><input type="checkbox"> Thuisverpleging</label>
+        <label><input type="checkbox"> Gezinshulp</label>
+        <label><input type="checkbox"> Kinesitherapie</label>
+        <label><input type="checkbox"> Warme maaltijden</label>
+        <label><input type="checkbox"> Hulpmiddelen</label>
+        <label><input type="checkbox"> Klusjesdienst</label>
+      </div>
+    </aside>
+
+    <div class="listings">
+      <!-- Card 1: Thuisverpleegkundige + Altrio logo -->
+      <div class="card">
+        <div class="card-img">
+          <img class="photo"
+               src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
+               alt="Thuisverpleegkundige aan huis">
+
+          <span class="badge">✓ Geverifieerd</span>
+          <span class="badge-top">Top</span>
+
+          <!-- Pas het pad aan naar jouw echte logo-bestand (SVG of PNG) -->
+          <img class="group-logo"
+               src="images/logos/altrio.svg"
+               alt="Altrio"
+               title="Aangesloten bij Altrio Thuisverpleging">
+        </div>
+
+        <h3>Sarah Peeters</h3>
+        <p class="rating">⭐ 4.9 (127)</p>
+        <p>Thuisverpleegkundige • 10 jaar</p>
+        <p>Onmiddellijke opstart mogelijk</p>
+
+        <div class="tags"><span>NL</span><span>FR</span></div>
+
+        <div class="footer">
+          <span class="price">geconventioneerd</span>
+          <button>Contact</button>
+        </div>
+      </div>
+
+      <!-- Card 2: Kinesist -->
+      <div class="card">
+        <div class="card-img">
+          <img class="photo"
+               src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
+               alt="Kinesitherapeut tijdens behandeling">
+
+          <span class="badge">✓ Geverifieerd</span>
+          <span class="badge-top">Komt aan huis</span>
+        </div>
+
+        <h3>Mohamed El Amrani</h3>
+        <p class="rating">⭐ 4.8 (89)</p>
+        <p>Kinesitherapeut • 7 jaar</p>
+
+        <div class="tags"><span>AR</span><span>NL</span></div>
+
+        <div class="footer">
+          <span class="price">niet geconventioneerd</span>
+          <button>Contact</button>
+        </div>
+      </div>
+
+      <!-- Card 3: Maaltijd -->
+      <div class="card">
+        <div class="card-img">
+          <img class="photo"
+               src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80"
+               alt="Warme maaltijd aan huis">
+
+          <span class="badge">✓ Geverifieerd</span>
+          <span class="badge-new">Nieuw</span>
+        </div>
+
+        <h3>Delimeal</h3>
+        <p class="rating">⭐ 5.0 (23)</p>
+        <p>Warme maaltijd aan huis</p>
+
+        <div class="tags"><span>NL</span><span>PL</span></div>
+
+        <div class="footer">
+          <span class="price">€28/u</span>
+          <button>Contact</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+<div class="card">
+  <div class="card-img">
+    <img
+      src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
+      alt="Kinesitherapeut tijdens behandeling">
+
+    <span class="badge">✓ Geverifieerd</span>
+    <span class="badge-top">Komt aan huis</span>
+  </div>
+
+  <h3>Mohamed El Amrani</h3>
+  <p class="rating">⭐ 4.8 (89)</p>
+  <p>Kinesitherapeut • 7 jaar</p>
+
+  <div class="tags"><span>AR</span><span>NL</span></div>
+
+  <div class="footer">
+    <span class="price">niet geconventioneerd</span>
+    <button>Contact</button>
+  </div>
+</div>
+<div class="card">
+  <div class="card-img">
+    <img
+      src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
+      alt="Thuisverpleegkundige aan huis">
+
+    <span class="badge">✓ Geverifieerd</span>
+    <span class="badge-top">Top</span>
+
+    <img
+      class="group-logo"
+      src="images/logos/altrio.svg"
+      alt="Altrio"
+      title="Aangesloten bij Altrio Thuisverpleging">
+  </div>
+
+  <h3>Sarah Peeters</h3>
+  <p class="rating">⭐ 4.9 (127)</p>
+  <p>Thuisverpleegkundige • 10 jaar</p>
+  <p>Onmiddellijke opstart mogelijk</p>
+
+  <div class="tags"><span>NL</span><span>FR</span></div>
+
+  <div class="footer">
+    <span class="price">geconventioneerd</span>
+    <button>Contact</button>
+  </div>
+</div>
+
+
+
+
+

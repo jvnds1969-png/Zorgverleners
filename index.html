@@ -1,502 +1,71 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Zorgstart Marketplace</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-  <h1>Zorgstart Marketplace</h1>
-
-  <section class="listings" id="provider-list">
-    <!-- kaarten komen hier -->
-  </section>
-
-  <script src="js/script.js"></script>
-</body>
-</html>
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.35;
-    }
-
-    /* ---------- Header ---------- */
-    header{
-      background:var(--brand);
-      color:#fff;
-      padding:16px 20px;
-      box-shadow:0 2px 10px rgba(0,0,0,.12);
-    }
-
-    .container{
-      max-width:1400px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .logo{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-
-    .logo-text{
-      font-size:2.05rem;
-      font-weight:900;
-      letter-spacing:-.02em;
-      white-space:nowrap;
-    }
-
-    .marketplace{
-      margin-top:2px;
-      font-size:.72rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      opacity:.92;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .lang-pill{
-      background:rgba(255,255,255,.18);
-      padding:.55rem .8rem;
-      border-radius:999px;
-      font-weight:800;
-      font-size:.9rem;
-      white-space:nowrap;
-    }
-
-    .btn-host{
-      background:#fff;
-      color:var(--brand);
-      border:0;
-      padding:.72rem 1.25rem;
-      border-radius:999px;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow:0 6px 16px rgba(0,0,0,.14);
-      transition:transform .15s ease, box-shadow .15s ease;
-      white-space:nowrap;
-    }
-
-    .btn-host:hover{
-      transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(0,0,0,.18);
-    }
-
-    /* ---------- Hero ---------- */
-    .hero{
-      background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-      color:#fff;
-      padding:44px 16px 30px;
-      text-align:center;
-    }
-
-    .hero h1{
-      font-size:2.35rem;
-      letter-spacing:-.02em;
-      margin-bottom:16px;
-    }
-
-    .search-bar{
-      max-width:920px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1.2fr 1.2fr auto;
-      gap:10px;
-      padding:10px;
-      background:#fff;
-      border-radius:999px;
-      box-shadow:0 14px 34px rgba(0,0,0,.14);
-      align-items:center;
-    }
-
-    .search-bar input{
-      border:0;
-      outline:0;
-      padding:14px 14px;
-      border-radius:999px;
-      font-size:1rem;
-      background:transparent;
-    }
-
-    .search-bar input:focus{
-      background:#f3f3f3;
-    }
-
-    .btn-search{
-      border:0;
-      cursor:pointer;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:900;
-      color:#fff;
-      background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-      box-shadow:0 12px 22px rgba(255,56,92,.25);
-      transition:transform .15s ease, box-shadow .15s ease;
-      white-space:nowrap;
-    }
-
-    .btn-search:hover{
-      transform:translateY(-1px);
-      box-shadow:0 18px 30px rgba(255,56,92,.30);
-    }
-
-    /* ---------- Layout ---------- */
-    main{
-      max-width:1400px;
-      margin:22px auto;
-      padding:0 16px 40px;
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:18px;
-      align-items:start;
-    }
-
-    /* ---------- Filters ---------- */
-    .filters{
-      background:var(--card);
-      border-radius:14px;
-      padding:14px;
-      box-shadow:0 2px 12px rgba(0,0,0,.08);
-      position:sticky;
-      top:14px;
-    }
-
-    .filters h2{
-      font-size:1rem;
-      margin-bottom:8px;
-    }
-
-    .filter-group{
-      border-top:1px solid #eee;
-      margin-top:12px;
-      padding-top:12px;
-    }
-
-    .filter-group h3{
-      font-size:.92rem;
-      color:#333;
-      margin-bottom:8px;
-    }
-
-    .filters label{
-      display:flex;
-      align-items:center;
-      gap:.55rem;
-      margin:.5rem 0;
-      font-size:.92rem;
-      color:#444;
-      cursor:pointer;
-      user-select:none;
-    }
-
-    input[type="checkbox"]{ accent-color:var(--brand); }
-
-    /* Subfilters under Thuisverpleging */
-    .subfilters{
-      margin:.6rem 0 0 1.25rem;
-      padding-left:.85rem;
-      border-left:2px solid #f0f0f0;
-      display:grid;
-      gap:.3rem;
-    }
-
-    .subfilters[aria-disabled="true"]{
-      opacity:.45;
-      pointer-events:none;
-    }
-
-    /* ---------- Listings ---------- */
-    .listings{
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
-      gap:16px;
-    }
-
-    /* ---------- Card ---------- */
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow-sm);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-
-    .card:hover{
-      transform:translateY(-5px);
-      box-shadow:var(--shadow-lg);
-    }
-
-    .card-img{
-      height:210px;
-      position:relative;
-      overflow:hidden;
-      background:#eaeaea;
-    }
-
-    /* Main image */
-    .card-img img:not(.group-logo){
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform:scale(1.02);
-      transition:transform .25s ease;
-    }
-
-    .card:hover .card-img img:not(.group-logo){
-      transform:scale(1.07);
-    }
-
-    /* Overlay for readability */
-    .card-img::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.34) 0%, rgba(0,0,0,.12) 45%, rgba(0,0,0,0) 70%);
-      pointer-events:none;
-    }
-
-    /* Badges */
-    .badge{
-      position:absolute;
-      top:12px; left:12px;
-      z-index:3;
-      background:rgba(255,255,255,.92);
-      color:#0f8f66;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:900;
-      box-shadow:0 2px 8px rgba(0,0,0,.18);
-      white-space:nowrap;
-      backdrop-filter:saturate(140%) blur(6px);
-    }
-
-    .badge-right{
-      position:absolute;
-      top:12px; right:12px;
-      z-index:3;
-      background:rgba(255,56,92,.95);
-      color:#fff;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:900;
-      box-shadow:0 2px 8px rgba(0,0,0,.18);
-      white-space:nowrap;
-      backdrop-filter:saturate(140%) blur(6px);
-    }
-
-    .badge-right.badge-new{
-      background:rgba(0,166,153,.95);
-    }
-
-    /* Chips row (optional) */
-    .chips{
-      position:absolute;
-      left:12px; right:12px; bottom:12px;
-      z-index:3;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      padding-right:58px; /* room for logo */
-    }
-
-    .chip{
-      background:rgba(255,255,255,.92);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:.74rem;
-      font-weight:900;
-      box-shadow:0 2px 8px rgba(0,0,0,.18);
-      white-space:nowrap;
-      max-width:100%;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      backdrop-filter:saturate(140%) blur(6px);
-    }
-
-    /* Group logo */
-    .group-logo{
-      position:absolute;
-      bottom:12px;
-      right:12px;
-      height:34px;
-      width:auto;
-      background:rgba(255,255,255,.95);
-      padding:6px 8px;
-      border-radius:10px;
-      z-index:4;
-      box-shadow:0 2px 10px rgba(0,0,0,.18);
-    }
-
-    .card-content{
-      padding:14px 14px 10px;
-    }
-
-    .card-content h3{
-      font-size:1.15rem;
-      letter-spacing:-.01em;
-      margin-bottom:4px;
-    }
-
-    .meta{
-      color:var(--muted);
-      font-size:.93rem;
-      margin:4px 0;
-    }
-
-    .rating{
-      color:var(--text);
-      font-weight:900;
-    }
-
-    .tags{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .tags span{
-      background:#f3f3f3;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:900;
-      color:#333;
-    }
-
-    .footer{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-top:1px solid #eee;
-    }
-
-    .price{
-      font-weight:900;
-      white-space:nowrap;
-    }
-
-    .btn-cta{
-      border:0;
-      background:var(--brand);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:12px;
-      font-weight:900;
-      cursor:pointer;
-      box-shadow:0 10px 20px rgba(255,56,92,.22);
-      transition:transform .15s ease, box-shadow .15s ease;
-      white-space:nowrap;
-    }
-
-    .btn-cta:hover{
-      transform:translateY(-1px);
-      box-shadow:0 16px 26px rgba(255,56,92,.28);
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width:980px){
-      main{grid-template-columns:1fr}
-      .filters{position:relative; top:auto}
-    }
-
-    @media (max-width:780px){
-      .hero h1{font-size:2rem}
-
-      .search-bar{
-        grid-template-columns:1fr;
-        border-radius:18px;
-      }
-
-      .btn-search{
-        width:100%;
-        border-radius:14px;
-      }
-
-      .listings{grid-template-columns:1fr}
-      .chips{padding-right:0}
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <span class="logo-text">🏠 Zorgstart</span>
-        <span class="marketplace">Marketplace</span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-title">🏠 Zorgstart</span>
+        <span class="brand-subtitle">Marketplace</span>
       </div>
 
       <div class="header-actions">
         <span class="lang-pill" title="Taal van de interface">🇧🇪 Nederlands</span>
-        <button class="btn-host" type="button">Account zorgverlener</button>
+        <button class="btn btn-host" type="button">Account zorgverlener</button>
       </div>
     </div>
   </header>
 
   <section class="hero">
-    <h1>Vind je zorg- of dienstverlener</h1>
+    <div class="container hero-inner">
+      <h1>Vind je zorg- of dienstverlener</h1>
 
-    <div class="search-bar" role="search" aria-label="Zoeken">
-      <input type="text" placeholder="📍 Postcode of gemeente" aria-label="Postcode of gemeente">
-      <input type="text" placeholder="🌍 Taal / cultuur" aria-label="Taal of cultuur">
-      <button class="btn-search" type="button">Zoeken</button>
+      <div class="search-bar" role="search" aria-label="Zoeken">
+        <input type="text" placeholder="📍 Postcode of gemeente" aria-label="Postcode of gemeente" />
+        <input type="text" placeholder="🌍 Taal / cultuur" aria-label="Taal of cultuur" />
+        <button class="btn btn-search" type="button">Zoeken</button>
+      </div>
     </div>
   </section>
 
-  <main>
+  <main class="container layout">
     <aside class="filters" aria-label="Filters">
       <h2>Filters</h2>
 
       <div class="filter-group">
         <h3>Type</h3>
 
-        <label>
-          <input id="filter-tv" type="checkbox">
-          Thuisverpleging
+        <label class="check">
+          <input id="filter-tv" type="checkbox" />
+          <span>Thuisverpleging</span>
         </label>
 
-        <!-- Expertise INSIDE Thuisverpleging -->
         <div class="subfilters" id="tv-subfilters" aria-label="Thuisverpleging expertise" aria-disabled="true">
-          <label><input type="checkbox"> Algemene zorg & medicatie</label>
-          <label><input type="checkbox"> Expert wondzorg</label>
-          <label><input type="checkbox"> Palliatieve thuiszorg</label>
-          <label><input type="checkbox"> Expert OPAT</label>
-          <label><input type="checkbox"> Diabeteseducator</label>
-          <label><input type="checkbox"> Expert oncologie</label>
-          <label><input type="checkbox"> TPN / PICC</label>
+          <label class="check"><input type="checkbox" /> <span>Algemene zorg & medicatie</span></label>
+          <label class="check"><input type="checkbox" /> <span>Expert wondzorg</span></label>
+          <label class="check"><input type="checkbox" /> <span>Palliatieve thuiszorg</span></label>
+          <label class="check"><input type="checkbox" /> <span>Expert OPAT</span></label>
+          <label class="check"><input type="checkbox" /> <span>Diabeteseducator</span></label>
+          <label class="check"><input type="checkbox" /> <span>Expert oncologie</span></label>
+          <label class="check"><input type="checkbox" /> <span>TPN / PICC</span></label>
         </div>
 
-        <label><input type="checkbox"> Gezinshulp</label>
-        <label><input type="checkbox"> Kinesitherapie</label>
-        <label><input type="checkbox"> Warme maaltijden</label>
-        <label><input type="checkbox"> Hulpmiddelen</label>
-        <label><input type="checkbox"> Klusjesdienst</label>
+        <label class="check"><input type="checkbox" /> <span>Gezinshulp</span></label>
+        <label class="check"><input type="checkbox" /> <span>Kinesitherapie</span></label>
+        <label class="check"><input type="checkbox" /> <span>Warme maaltijden</span></label>
+        <label class="check"><input type="checkbox" /> <span>Hulpmiddelen</span></label>
+        <label class="check"><input type="checkbox" /> <span>Klusjesdienst</span></label>
       </div>
     </aside>
 
-    <section class="listings" aria-label="Aanbieders">
-      <!-- Card 1: Sarah -->
+    <section class="listings" id="provider-list" aria-label="Aanbieders">
+      <!-- Card 1 -->
       <article class="card">
         <div class="card-img">
           <img
@@ -504,7 +73,7 @@
             alt="Verpleegkundige in uniform"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+          />
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-right">Onmiddellijk beschikbaar</span>
@@ -521,7 +90,7 @@
             alt="Altrio"
             title="Aangesloten bij Altrio Thuisverpleging"
             onerror="this.style.display='none'"
-          >
+          />
         </div>
 
         <div class="card-content">
@@ -531,13 +100,13 @@
           <div class="tags"><span>NL</span><span>FR</span></div>
         </div>
 
-        <div class="footer">
+        <div class="card-footer">
           <span class="price">Geconventioneerd</span>
-          <button class="btn-cta" type="button">Contact</button>
+          <button class="btn btn-cta" type="button">Contact</button>
         </div>
       </article>
 
-      <!-- Card 2: Kinesitherapeut (met foto) -->
+      <!-- Card 2 -->
       <article class="card">
         <div class="card-img">
           <img
@@ -545,7 +114,7 @@
             alt="Kinesitherapeut tijdens behandeling"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+          />
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-right">Komt aan huis</span>
@@ -557,13 +126,13 @@
           <div class="tags"><span>AR</span><span>NL</span></div>
         </div>
 
-        <div class="footer">
+        <div class="card-footer">
           <span class="price">Niet geconventioneerd</span>
-          <button class="btn-cta" type="button">Contact</button>
+          <button class="btn btn-cta" type="button">Contact</button>
         </div>
       </article>
 
-      <!-- Card 3: maaltijden -->
+      <!-- Card 3 -->
       <article class="card">
         <div class="card-img">
           <img
@@ -571,7 +140,7 @@
             alt="Warme maaltijd aan huis"
             loading="lazy"
             referrerpolicy="no-referrer"
-          >
+          />
 
           <span class="badge">✓ Geverifieerd</span>
           <span class="badge-right badge-new">Nieuw</span>
@@ -583,30 +152,14 @@
           <div class="tags"><span>NL</span><span>PL</span></div>
         </div>
 
-        <div class="footer">
+        <div class="card-footer">
           <span class="price">Dagelijkse leveringen</span>
-          <button class="btn-cta" type="button">Contact</button>
+          <button class="btn btn-cta" type="button">Contact</button>
         </div>
       </article>
     </section>
   </main>
 
-  <script>
-    // UX: expertise only active when "Thuisverpleging" is checked
-    const tv = document.getElementById('filter-tv');
-    const sub = document.getElementById('tv-subfilters');
-
-    function syncSubfilters(){
-      const enabled = tv.checked;
-      sub.setAttribute('aria-disabled', String(!enabled));
-      sub.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.disabled = !enabled;
-        if (!enabled) cb.checked = false;
-      });
-    }
-
-    tv.addEventListener('change', syncSubfilters);
-    syncSubfilters();
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>

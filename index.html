@@ -9,14 +9,14 @@
 
 <body>
   <header class="site-header">
-    <div class="container header-inner">
+    <div class="container header-row">
       <div class="brand">
-        <span class="brand-title">🏠 Zorgstart</span>
-        <span class="brand-subtitle">Marketplace</span>
+        <div class="brand-title">🏠 Zorgstart</div>
+        <div class="brand-subtitle">Marketplace</div>
       </div>
 
       <div class="header-actions">
-        <span class="lang-pill" title="Taal van de interface">🇧🇪 Nederlands</span>
+        <span class="pill">🇧🇪 Nederlands</span>
         <button class="btn btn-host" type="button">Account zorgverlener</button>
       </div>
     </div>
@@ -27,10 +27,12 @@
       <h1>Vind je zorg- of dienstverlener</h1>
 
       <div class="search-bar" role="search" aria-label="Zoeken">
-        <input type="text" placeholder="📍 Postcode of gemeente" aria-label="Postcode of gemeente" />
-        <input type="text" placeholder="🌍 Taal / cultuur" aria-label="Taal of cultuur" />
-        <button class="btn btn-search" type="button">Zoeken</button>
+        <input id="q-location" type="text" placeholder="📍 Postcode of gemeente" aria-label="Postcode of gemeente" />
+        <input id="q-language" type="text" placeholder="🌍 Taal / cultuur" aria-label="Taal / cultuur" />
+        <button id="btn-search" class="btn btn-search" type="button">Zoeken</button>
       </div>
+
+      <p class="hero-hint">Zoek op regio, taal en type ondersteuning. Resultaten tonen geverifieerde aanbieders.</p>
     </div>
   </section>
 
@@ -42,121 +44,50 @@
         <h3>Type</h3>
 
         <label class="check">
-          <input id="filter-tv" type="checkbox" />
+          <input id="f-tv" type="checkbox" value="thuisverpleging" />
           <span>Thuisverpleging</span>
         </label>
 
-        <div class="subfilters" id="tv-subfilters" aria-label="Thuisverpleging expertise" aria-disabled="true">
-          <label class="check"><input type="checkbox" /> <span>Algemene zorg & medicatie</span></label>
-          <label class="check"><input type="checkbox" /> <span>Expert wondzorg</span></label>
-          <label class="check"><input type="checkbox" /> <span>Palliatieve thuiszorg</span></label>
-          <label class="check"><input type="checkbox" /> <span>Expert OPAT</span></label>
-          <label class="check"><input type="checkbox" /> <span>Diabeteseducator</span></label>
-          <label class="check"><input type="checkbox" /> <span>Expert oncologie</span></label>
-          <label class="check"><input type="checkbox" /> <span>TPN / PICC</span></label>
+        <div id="tv-subfilters" class="subfilters" aria-label="Thuisverpleging expertise" aria-disabled="true">
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="algemene zorg" /> <span>Algemene zorg & medicatie</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="wondzorg" /> <span>Expert wondzorg</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="palliatief" /> <span>Palliatieve thuiszorg</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="opat" /> <span>Expert OPAT</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="diabetes" /> <span>Diabeteseducator</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="oncologie" /> <span>Expert oncologie</span></label>
+          <label class="check"><input class="f-tv-exp" type="checkbox" value="tpn/picc" /> <span>TPN / PICC</span></label>
         </div>
 
-        <label class="check"><input type="checkbox" /> <span>Gezinshulp</span></label>
-        <label class="check"><input type="checkbox" /> <span>Kinesitherapie</span></label>
-        <label class="check"><input type="checkbox" /> <span>Warme maaltijden</span></label>
-        <label class="check"><input type="checkbox" /> <span>Hulpmiddelen</span></label>
-        <label class="check"><input type="checkbox" /> <span>Klusjesdienst</span></label>
+        <label class="check"><input id="f-kine" type="checkbox" value="kinesitherapie" /> <span>Kinesitherapie</span></label>
+        <label class="check"><input id="f-gezin" type="checkbox" value="gezinshulp" /> <span>Gezinshulp</span></label>
+        <label class="check"><input id="f-maaltijd" type="checkbox" value="warme maaltijden" /> <span>Warme maaltijden</span></label>
+        <label class="check"><input id="f-hulpmiddelen" type="checkbox" value="hulpmiddelen" /> <span>Hulpmiddelen</span></label>
+        <label class="check"><input id="f-klus" type="checkbox" value="klusjesdienst" /> <span>Klusjesdienst</span></label>
       </div>
+
+      <div class="filter-group">
+        <h3>Beschikbaarheid</h3>
+        <label class="check"><input id="f-available" type="checkbox" /> <span>Alleen beschikbaar</span></label>
+        <label class="check"><input id="f-verified" type="checkbox" /> <span>Alleen geverifieerd</span></label>
+      </div>
+
+      <button id="btn-reset" class="btn btn-reset" type="button">Reset filters</button>
     </aside>
 
-    <section class="listings" id="provider-list" aria-label="Aanbieders">
-      <!-- Card 1 -->
-      <article class="card">
-        <div class="card-img">
-          <img
-            src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1400&q=80"
-            alt="Verpleegkundige in uniform"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          />
+    <section class="results">
+      <div class="results-top">
+        <h2 class="results-title">Aanbieders</h2>
+        <div id="results-count" class="results-count">—</div>
+      </div>
 
-          <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-right">Onmiddellijk beschikbaar</span>
+      <section id="provider-list" class="listings" aria-label="Resultaten">
+        <!-- kaarten komen hier via JS -->
+      </section>
 
-          <div class="chips" aria-label="Expertises">
-            <span class="chip">Algemene zorg</span>
-            <span class="chip">Palliatief</span>
-            <span class="chip">OPAT</span>
-          </div>
-
-          <img
-            class="group-logo"
-            src="images/logos/altrio.svg"
-            alt="Altrio"
-            title="Aangesloten bij Altrio Thuisverpleging"
-            onerror="this.style.display='none'"
-          />
-        </div>
-
-        <div class="card-content">
-          <h3>Sarah Peeters</h3>
-          <div class="meta"><span class="rating">⭐ 4.9</span> (127) • Thuisverpleegkundige • 10 jaar</div>
-          <div class="meta">Onmiddellijke opstart mogelijk</div>
-          <div class="tags"><span>NL</span><span>FR</span></div>
-        </div>
-
-        <div class="card-footer">
-          <span class="price">Geconventioneerd</span>
-          <button class="btn btn-cta" type="button">Contact</button>
-        </div>
-      </article>
-
-      <!-- Card 2 -->
-      <article class="card">
-        <div class="card-img">
-          <img
-            src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1400&q=80"
-            alt="Kinesitherapeut tijdens behandeling"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          />
-
-          <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-right">Komt aan huis</span>
-        </div>
-
-        <div class="card-content">
-          <h3>Mohamed El Amrani</h3>
-          <div class="meta"><span class="rating">⭐ 4.8</span> (89) • Kinesitherapeut • 7 jaar</div>
-          <div class="tags"><span>AR</span><span>NL</span></div>
-        </div>
-
-        <div class="card-footer">
-          <span class="price">Niet geconventioneerd</span>
-          <button class="btn btn-cta" type="button">Contact</button>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="card">
-        <div class="card-img">
-          <img
-            src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1400&q=80"
-            alt="Warme maaltijd aan huis"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          />
-
-          <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-right badge-new">Nieuw</span>
-        </div>
-
-        <div class="card-content">
-          <h3>Delimeal</h3>
-          <div class="meta"><span class="rating">⭐ 5.0</span> (23) • Warme maaltijd aan huis</div>
-          <div class="tags"><span>NL</span><span>PL</span></div>
-        </div>
-
-        <div class="card-footer">
-          <span class="price">Dagelijkse leveringen</span>
-          <button class="btn btn-cta" type="button">Contact</button>
-        </div>
-      </article>
+      <div id="empty-state" class="empty" hidden>
+        <h3>Geen resultaten</h3>
+        <p>Probeer een andere postcode, taal of filter.</p>
+      </div>
     </section>
   </main>
 

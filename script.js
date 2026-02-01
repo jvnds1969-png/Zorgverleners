@@ -1,34 +1,18 @@
-fetch('data/providers.json')
-  .then(r => r.json())
-  .then(renderProviders)
-  .catch(err => {
-    console.error(err);
-    document.getElementById('provider-list').innerHTML =
-      '<p>Kon providers.json niet laden. Controleer paden en GitHub Pages.</p>';
-  });
+// Subfilters (expertise) only active when "Thuisverpleging" is checked
+const tv = document.getElementById('filter-tv');
+const sub = document.getElementById('tv-subfilters');
 
-function renderProviders(providers){
-  const list = document.getElementById('provider-list');
-  list.innerHTML = '';
+function syncSubfilters(){
+  const enabled = !!tv?.checked;
+  if (!sub) return;
 
-  providers.forEach(p => {
-    list.insertAdjacentHTML('beforeend', cardHTML(p));
+  sub.setAttribute('aria-disabled', String(!enabled));
+
+  sub.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.disabled = !enabled;
+    if (!enabled) cb.checked = false;
   });
 }
 
-function cardHTML(p){
-  const langs = (p.languages || []).map(l => `<span class="tag">${l}</span>`).join('');
-  return `
-    <article class="card">
-      <div class="card-img">
-        <img src="${p.photo}" alt="${p.display_name}">
-        <span class="badge">${p.badge || ''}</span>
-      </div>
-      <div class="card-content">
-        <h3>${p.display_name}</h3>
-        <p>${p.type} • ${p.pricing}</p>
-        <div class="tags">${langs}</div>
-      </div>
-    </article>
-  `;
-}
+if (tv) tv.addEventListener('change', syncSubfilters);
+syncSubfilters();

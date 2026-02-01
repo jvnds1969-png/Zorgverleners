@@ -1,4 +1,4 @@
-<<!doctype html>
+<!doctype html>
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
@@ -6,466 +6,211 @@
   <title>Zorgstart Marketplace</title>
 
   <style>
-    /* =========================
-       Zorgstart Marketplace
-       opgeschoond + consistent
-       ========================= */
-
-    *{margin:0;padding:0;box-sizing:border-box}
-
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:#f7f7f7;
-      color:#222;
+    :root{
+      --brand:#ff385c;
+      --bg:#f6f6f6;
+      --text:#222;
+      --muted:#6f6f6f;
+      --card:#fff;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.10);
     }
 
-    /* Header */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+
     header{
-      background:#ff385c;
+      background:var(--brand);
       color:#fff;
-      padding:1rem 2rem;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      padding:16px 20px;
+      box-shadow:0 2px 10px rgba(0,0,0,.12);
     }
-
-    .container{
-      max-width:1400px;
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1rem;
+    .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;flex-direction:column;line-height:1.05}
+    .brand b{font-size:1.55rem}
+    .brand small{opacity:.9;letter-spacing:.08em;text-transform:uppercase;font-weight:700;font-size:.7rem;margin-top:2px}
+    .header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{background:rgba(255,255,255,.18);padding:.5rem .75rem;border-radius:999px;font-weight:700;font-size:.9rem;white-space:nowrap}
+    .btn{
+      background:#fff;color:var(--brand);
+      border:0;border-radius:999px;
+      padding:.7rem 1.2rem;font-weight:900;cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.14);
     }
+    .btn:hover{transform:translateY(-1px)}
 
-    .logo{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-
-    .logo-text{
-      font-size:2.05rem;
-      font-weight:800;
-      letter-spacing:-0.02em;
-    }
-
-    .marketplace{
-      font-size:0.72rem;
-      opacity:0.92;
-      letter-spacing:0.05em;
-      text-transform:uppercase;
-      margin-top:0.15rem;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:1rem;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .lang-indicator{
-      display:flex;
-      align-items:center;
-      gap:0.4rem;
-      font-size:0.9rem;
-      font-weight:600;
-      opacity:0.95;
-      cursor:default;
-      white-space:nowrap;
-    }
-
-    .btn-host{
-      background:#fff;
-      color:#ff385c;
-      border:none;
-      padding:0.7rem 1.6rem;
-      border-radius:999px;
-      font-weight:800;
-      cursor:pointer;
-      transition:transform 0.15s ease, box-shadow 0.15s ease;
-      box-shadow:0 2px 8px rgba(0,0,0,0.12);
-      white-space:nowrap;
-    }
-
-    .btn-host:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,0,0,0.18);
-    }
-
-    /* Hero */
     .hero{
-      background:linear-gradient(135deg,#ff385c,#e61e4d);
-      color:#fff;
-      padding:3.5rem 2rem 2.5rem;
-      text-align:center;
+      background:linear-gradient(135deg,var(--brand),#e61e4d);
+      color:#fff;text-align:center;
+      padding:38px 16px 26px;
     }
+    .hero h1{font-size:2rem;letter-spacing:-.02em;margin-bottom:14px}
 
-    .hero h2{
-      font-size:2.6rem;
-      margin-bottom:1.5rem;
-      letter-spacing:-0.02em;
+    .search{
+      max-width:900px;margin:0 auto;
+      background:#fff;border-radius:999px;
+      padding:8px;display:flex;gap:8px;flex-wrap:wrap;
+      box-shadow:var(--shadow);
     }
-
-    /* Search */
-    .search-bar{
-      max-width:920px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1.2fr 1.2fr 1fr auto;
-      gap:0.6rem;
-      background:#fff;
-      padding:0.55rem;
-      border-radius:999px;
-      align-items:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    .search input{
+      flex:1 1 220px;border:0;outline:0;
+      padding:14px 14px;border-radius:999px;
+      font-size:1rem;background:transparent;
     }
-
-    .search-bar input{
-      padding:1rem 1.05rem;
-      border:none;
-      font-size:1rem;
-      outline:none;
-      background:transparent;
-      border-radius:999px;
-    }
-
-    .search-bar input:focus{
-      background:#f7f7f7;
-    }
-
-    .btn-search{
-      background:linear-gradient(135deg,#ff385c,#e61e4d);
-      color:#fff;
-      border:none;
-      padding:1rem 2.1rem;
-      border-radius:999px;
-      font-weight:800;
-      cursor:pointer;
-      box-shadow:0 10px 20px rgba(255,56,92,0.25);
-      transition:transform 0.15s ease, box-shadow 0.15s ease;
+    .search input:focus{background:#f3f3f3}
+    .search button{
+      border:0;border-radius:999px;
+      padding:14px 22px;font-weight:900;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),#e61e4d);
+      color:#fff;box-shadow:0 10px 20px rgba(255,56,92,.25);
       white-space:nowrap;
     }
+    .search button:hover{transform:translateY(-1px)}
 
-    .btn-search:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 28px rgba(255,56,92,0.32);
-    }
-
-    /* Layout */
-    .marketplace-grid{
-      max-width:1400px;
-      margin:2rem auto;
-      padding:0 2rem;
+    main{
+      max-width:1200px;
+      margin:22px auto;
+      padding:0 16px;
       display:grid;
       grid-template-columns:260px 1fr;
-      gap:2rem;
+      gap:18px;
       align-items:start;
     }
 
-    /* Filters */
-    .filters{
-      background:#fff;
-      padding:1.4rem;
-      border-radius:14px;
-      height:fit-content;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
-      position:sticky;
-      top:1.2rem;
+    aside{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:0 2px 12px rgba(0,0,0,.08);
+      position:sticky; top:14px;
     }
+    aside h2{font-size:1rem;margin-bottom:8px}
+    .fg{border-top:1px solid #eee;margin-top:12px;padding-top:12px}
+    .fg h3{font-size:.9rem;color:#333;margin-bottom:8px}
+    label{display:flex;gap:.55rem;align-items:center;margin:.5rem 0;color:#444;font-size:.92rem;cursor:pointer}
+    input[type="checkbox"]{accent-color:var(--brand)}
 
-    .filters h3{
-      font-size:1rem;
-      margin-bottom:0.2rem;
-    }
-
-    .filter-group{
-      margin-top:1.2rem;
-      padding-top:1.2rem;
-      border-top:1px solid #f0f0f0;
-    }
-
-    .filter-group h4{
-      margin-bottom:0.8rem;
-      font-size:0.9rem;
-      color:#333;
-    }
-
-    .filter-group label{
-      display:flex;
-      align-items:center;
-      gap:0.55rem;
-      margin:0.55rem 0;
-      font-size:0.92rem;
-      color:#444;
-      cursor:pointer;
-      user-select:none;
-    }
-
-    .filter-group input{ accent-color:#ff385c; }
-
-    /* Listings */
-    .listings{
+    .grid{
       display:grid;
       grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-      gap:1.6rem;
+      gap:16px;
     }
 
-    /* Card */
     .card{
-      background:#fff;
-      border-radius:18px;
+      background:var(--card);
+      border-radius:var(--radius);
       overflow:hidden;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-      transition:transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow:0 2px 12px rgba(0,0,0,.10);
+      transition:.18s ease;
     }
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(0,0,0,.16)}
 
-    .card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 16px 34px rgba(0,0,0,0.16);
+    .img{
+      position:relative;height:210px;background:#eaeaea;
     }
-
-    .card-img{
-      height:210px;
-      position:relative;
-      overflow:hidden;
-      background:#eaeaea;
+    .img img{
+      width:100%;height:100%;object-fit:cover;display:block;
     }
-
-    /* ROBUUST: alle afbeeldingen in card-img, behalve group-logo */
-    .card-img img:not(.group-logo){
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform:scale(1.02);
-      transition:transform 0.25s ease;
-    }
-
-    .card:hover .card-img img:not(.group-logo){
-      transform:scale(1.07);
-    }
-
-    /* Overlay voor leesbaarheid badges */
-    .card-img::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.0) 70%);
+    .img::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.08) 60%, rgba(0,0,0,0) 80%);
       pointer-events:none;
     }
 
-    /* Badges (top) */
-    .badge,
-    .badge-top,
-    .badge-new{
-      position:absolute;
-      top:0.85rem;
-      padding:0.42rem 0.82rem;
-      border-radius:999px;
-      font-size:0.78rem;
-      font-weight:800;
-      z-index:3;
-      box-shadow:0 2px 8px rgba(0,0,0,0.18);
-      backdrop-filter:saturate(140%) blur(6px);
-      white-space:nowrap;
-    }
-
     .badge{
-      left:0.85rem;
-      background:rgba(255,255,255,0.92);
-      color:#16a085;
+      position:absolute;top:12px;left:12px;z-index:2;
+      background:rgba(255,255,255,.92);
+      color:#0f8f66;
+      padding:6px 10px;border-radius:999px;
+      font-size:.78rem;font-weight:900;
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
+    .badge2{
+      position:absolute;top:12px;right:12px;z-index:2;
+      background:rgba(255,56,92,.95);color:#fff;
+      padding:6px 10px;border-radius:999px;
+      font-size:.78rem;font-weight:900;
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+      white-space:nowrap;
     }
 
-    .badge-top{
-      right:0.85rem;
-      background:rgba(255,56,92,0.95);
-      color:#fff;
+    .chips{
+      position:absolute;left:12px;right:12px;bottom:12px;z-index:2;
+      display:flex;gap:8px;flex-wrap:wrap;
     }
-
-    .badge-new{
-      right:0.85rem;
-      background:rgba(0,166,153,0.95);
-      color:#fff;
-    }
-
-    /* NEW: chip-row onderaan in image voor meerdere expertises */
-    .badge-row{
-      position:absolute;
-      left:0.85rem;
-      right:0.85rem;
-      bottom:0.85rem;
-      z-index:3;
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.45rem;
-      justify-content:flex-start;
-      align-items:center;
-      padding-right:56px; /* ruimte voor group-logo rechts */
-    }
-
     .chip{
-      background:rgba(255,255,255,0.92);
-      color:#222;
-      border-radius:999px;
-      padding:0.36rem 0.7rem;
-      font-size:0.74rem;
-      font-weight:900;
-      box-shadow:0 2px 8px rgba(0,0,0,0.18);
-      backdrop-filter:saturate(140%) blur(6px);
-      white-space:nowrap;
+      background:rgba(255,255,255,.92);
+      padding:6px 10px;border-radius:999px;
+      font-size:.75rem;font-weight:900;
       max-width:100%;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
     }
 
-    /* Groepslogo (Altrio) */
-    .group-logo{
-      position:absolute;
-      bottom:0.85rem;
-      right:0.85rem;
-      height:34px;
-      width:auto;
-      background:rgba(255,255,255,0.95);
-      padding:0.28rem 0.5rem;
-      border-radius:10px;
-      z-index:4; /* boven chips */
-      box-shadow:0 2px 10px rgba(0,0,0,0.18);
+    .content{padding:14px 14px 10px}
+    .content h3{font-size:1.12rem;margin-bottom:4px}
+    .meta{color:var(--muted);font-size:.93rem;margin:3px 0}
+    .rating{font-weight:900}
+
+    .langs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .langs span{
+      background:#f2f2f2;
+      padding:6px 10px;border-radius:999px;
+      font-weight:800;font-size:.78rem;color:#333;
     }
 
-    /* Content */
-    .card-content{ padding:1rem 1rem 0.6rem; }
-
-    .card h3{
-      font-size:1.15rem;
-      letter-spacing:-0.01em;
-      margin-bottom:0.25rem;
-    }
-
-    .card p{
-      color:#717171;
-      font-size:0.93rem;
-      margin-bottom:0.45rem;
-    }
-
-    .rating{
-      color:#222;
-      font-weight:800;
-    }
-
-    .tags{
-      display:flex;
-      gap:0.5rem;
-      flex-wrap:wrap;
-      margin-top:0.35rem;
-    }
-
-    .tags span{
-      background:#f7f7f7;
-      padding:0.32rem 0.72rem;
-      border-radius:999px;
-      font-size:0.78rem;
-      font-weight:800;
-      color:#333;
-    }
-
-    /* Footer */
     .footer{
-      padding:0.95rem 1rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      border-top:1px solid #eee;
-      gap:0.8rem;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 14px;border-top:1px solid #eee;gap:10px;
     }
-
-    .price{
-      font-size:1.05rem;
-      font-weight:900;
-      color:#222;
+    .price{font-weight:900;white-space:nowrap}
+    .cta{
+      background:var(--brand);color:#fff;border:0;border-radius:12px;
+      padding:10px 14px;font-weight:900;cursor:pointer;
+      box-shadow:0 10px 20px rgba(255,56,92,.22);
       white-space:nowrap;
     }
+    .cta:hover{transform:translateY(-1px)}
 
-    .footer button{
-      background:#ff385c;
-      color:#fff;
-      border:none;
-      padding:0.65rem 1.15rem;
-      border-radius:10px;
-      font-weight:900;
-      cursor:pointer;
-      transition:transform 0.15s ease, box-shadow 0.15s ease;
-      box-shadow:0 10px 20px rgba(255,56,92,0.22);
-      white-space:nowrap;
-    }
-
-    .footer button:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 28px rgba(255,56,92,0.28);
-    }
-
-    /* Responsive */
     @media (max-width:980px){
-      .marketplace-grid{ grid-template-columns:1fr; }
-      .filters{ position:relative; top:auto; }
-    }
-
-    @media (max-width:720px){
-      header{ padding:1rem 1rem; }
-      .marketplace-grid{ padding:0 1rem; }
-
-      .hero{ padding:2.8rem 1rem 2rem; }
-      .hero h2{ font-size:2.1rem; }
-
-      .search-bar{
-        grid-template-columns:1fr;
-        border-radius:18px;
-        padding:0.75rem;
-      }
-
-      .btn-search{
-        width:100%;
-        border-radius:14px;
-      }
-
-      .listings{ grid-template-columns:1fr; }
-
-      .badge-row{ padding-right:0; }
+      main{grid-template-columns:1fr}
+      aside{position:relative;top:auto}
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="container">
-      <div class="logo">
-        <span class="logo-text">🏠 Zorgstart</span>
-        <span class="marketplace">Marketplace</span>
+    <div class="wrap">
+      <div class="brand">
+        <b>🏠 Zorgstart</b>
+        <small>Marketplace</small>
       </div>
 
       <div class="header-actions">
-        <span class="lang-indicator" title="Taal van de interface">🇧🇪 Nederlands</span>
-        <button class="btn-host" type="button">Account zorgverlener</button>
+        <span class="pill">🇧🇪 Nederlands</span>
+        <button class="btn" type="button">Account zorgverlener</button>
       </div>
     </div>
   </header>
 
   <section class="hero">
-    <h2>Vind je zorg- of dienstverlener</h2>
+    <h1>Vind je zorg- of dienstverlener</h1>
 
-    <div class="search-bar">
-      <input type="text" placeholder="📍 Postcode of gemeente">
-      <input type="text" placeholder="🌍 Taal / cultuur">
-      <button class="btn-search" type="button">Zoeken</button>
+    <div class="search" role="search" aria-label="Zoeken">
+      <input type="text" placeholder="📍 Postcode of gemeente" aria-label="Postcode of gemeente">
+      <input type="text" placeholder="🌍 Taal / cultuur" aria-label="Taal of cultuur">
+      <button type="button">Zoeken</button>
     </div>
   </section>
 
-  <main class="marketplace-grid">
-    <aside class="filters">
-      <h3>Filters</h3>
+  <main>
+    <aside>
+      <h2>Filters</h2>
 
-      <div class="filter-group">
-        <h4>Type</h4>
+      <div class="fg">
+        <h3>Type</h3>
         <label><input type="checkbox"> Thuisverpleging</label>
         <label><input type="checkbox"> Gezinshulp</label>
         <label><input type="checkbox"> Kinesitherapie</label>
@@ -474,110 +219,103 @@
         <label><input type="checkbox"> Klusjesdienst</label>
       </div>
 
-      <!-- NEW: extra filters binnen thuisverpleging (meerdere aanvinkbaar) -->
-      <div class="filter-group">
-        <h4>Thuisverpleging – expertise</h4>
-        <label><input type="checkbox"> Algemene zorg&medicatietoediening</label>
-        <label><input type="checkbox"> Expert wondzorg</label>
-        <label><input type="checkbox"> Expert palliatieve thuiszorg</label>
-        <label><input type="checkbox"> Expert OPAT</label>
-        <label><input type="checkbox"> Diabeteseducator</label>
-        <label><input type="checkbox"> Expert oncologie</label>
-        <label><input type="checkbox"> Expert TPN-PICC</label>
+      <div class="fg">
+        <h3>Thuisverpleging – expertise</h3>
+        <label><input type="checkbox"> Wondzorg</label>
+        <label><input type="checkbox"> Palliatieve thuiszorg</label>
+        <label><input type="checkbox"> OPAT</label>
+        <label><input type="checkbox"> Diabeteseducatie</label>
+        <label><input type="checkbox"> TPN / PICC</label>
       </div>
     </aside>
 
-    <section class="listings" aria-label="Aanbieders">
-      <!-- Card 1 -->
+    <section class="grid" aria-label="Aanbieders">
+      <!-- Sarah (met expliciet verpleegkundige foto) -->
       <article class="card">
-        <div class="card-img">
+        <div class="img">
+          <!-- Betere, “duidelijk verpleegkundige” foto -->
           <img
-            src="https://images.unsplash.com/photo-1580281657521-6f7f1f4536a8?auto=format&fit=crop&w=1200&q=80"
-            alt="Thuisverpleegkundige aan huis">
+            src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1400&q=80"
+            alt="Verpleegkundige in uniform (thuiszorg)"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
 
           <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-top">Onmiddellijk beschikbaar</span>
+          <span class="badge2">Onmiddellijk beschikbaar</span>
 
-          <!-- NEW: meerdere expertises als chips (geen overlap) -->
-          <div class="badge-row" aria-label="Expertises">
-              <span class="chip">Algemene zorg en medicatie</span>
-            <span class="chip">Expert wondzorg</span>
-            <span class="chip">Diabeteseducator</span>
-            <span class="chip">Palliatieve thuiszorg</span>
+          <div class="chips" aria-label="Expertises">
+            <span class="chip">Algemene zorg</span>
+            <span class="chip">Wondzorg</span>
+            <span class="chip">Diabetes</span>
+            <span class="chip">Palliatief</span>
             <span class="chip">OPAT</span>
-            <span class="chip">TPN–PICC</span>
+            <span class="chip">TPN/PICC</span>
           </div>
-
-          <img
-            class="group-logo"
-            src="images/logos/altrio.svg"
-            alt="Altrio"
-            title="Aangesloten bij Altrio Thuisverpleging"
-            onerror="this.style.display='none'">
         </div>
 
-        <div class="card-content">
+        <div class="content">
           <h3>Sarah Peeters</h3>
-          <p class="rating">⭐ 4.9 (127)</p>
-          <p>Thuisverpleegkundige • 10 jaar</p>
-          <p>Onmiddellijke opstart mogelijk</p>
-
-          <div class="tags"><span>NL</span><span>FR</span></div>
+          <div class="meta"><span class="rating">⭐ 4.9</span> (127) • 10 jaar</div>
+          <div class="meta">Onmiddellijke opstart mogelijk</div>
+          <div class="langs"><span>NL</span><span>FR</span></div>
         </div>
 
         <div class="footer">
           <span class="price">Geconventioneerd</span>
-          <button type="button">Contact</button>
+          <button class="cta" type="button">Contact</button>
         </div>
       </article>
 
-      <!-- Card 2 -->
+      <!-- Kine -->
       <article class="card">
-        <div class="card-img">
+        <div class="img">
           <img
-            src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1200&q=80"
-            alt="Kinesitherapeut tijdens behandeling">
-
+            src="https://images.unsplash.com/photo-1599058917212-d750089bc07a?auto=format&fit=crop&w=1400&q=80"
+            alt="Kinesitherapeut tijdens behandeling"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
           <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-top">Komt aan huis</span>
+          <span class="badge2">Komt aan huis</span>
         </div>
 
-        <div class="card-content">
+        <div class="content">
           <h3>Mohamed El Amrani</h3>
-          <p class="rating">⭐ 4.8 (89)</p>
-          <p>Kinesitherapeut • 7 jaar</p>
-
-          <div class="tags"><span>AR</span><span>NL</span></div>
+          <div class="meta"><span class="rating">⭐ 4.8</span> (89) • 7 jaar</div>
+          <div class="meta">Kinesitherapeut</div>
+          <div class="langs"><span>AR</span><span>NL</span></div>
         </div>
 
         <div class="footer">
           <span class="price">Niet geconventioneerd</span>
-          <button type="button">Contact</button>
+          <button class="cta" type="button">Contact</button>
         </div>
       </article>
 
-      <!-- Card 3 -->
+      <!-- Maaltijden -->
       <article class="card">
-        <div class="card-img">
+        <div class="img">
           <img
-            src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1200&q=80"
-            alt="Warme maaltijd aan huis">
-
+            src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1400&q=80"
+            alt="Warme maaltijd aan huis"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          >
           <span class="badge">✓ Geverifieerd</span>
-          <span class="badge-new">Nieuw</span>
+          <span class="badge2" style="background:rgba(0,166,153,.95)">Nieuw</span>
         </div>
 
-        <div class="card-content">
+        <div class="content">
           <h3>Delimeal</h3>
-          <p class="rating">⭐ 5.0 (23)</p>
-          <p>Warme maaltijd aan huis</p>
-
-          <div class="tags"><span>NL</span><span>PL</span></div>
+          <div class="meta"><span class="rating">⭐ 5.0</span> (23)</div>
+          <div class="meta">Warme maaltijd aan huis</div>
+          <div class="langs"><span>NL</span><span>PL</span></div>
         </div>
 
         <div class="footer">
-          <span class="price">dagelijkse leveringen</span>
-          <button type="button">Contact</button>
+          <span class="price">Dagelijkse leveringen</span>
+          <button class="cta" type="button">Contact</button>
         </div>
       </article>
     </section>

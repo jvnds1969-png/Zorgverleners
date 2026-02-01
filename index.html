@@ -219,16 +219,24 @@
         <label><input type="checkbox"> Klusjesdienst</label>
       </div>
 
-      <div class="fg">
-        <h3>Thuisverpleging – expertise</h3>
-        <label><input type="checkbox"> Wondzorg</label>
-        <label><input type="checkbox"> Palliatieve thuiszorg</label>
-        <label><input type="checkbox"> OPAT</label>
-        <label><input type="checkbox"> Diabeteseducatie</label>
-        <label><input type="checkbox"> TPN / PICC</label>
-      </div>
-    </aside>
+   <div class="fg">
+  <h3>Thuisverpleging</h3>
 
+  <label>
+    <input type="checkbox" id="tv">
+    Thuisverpleging
+  </label>
+
+  <!-- Subfilters: alleen relevant bij thuisverpleging -->
+  <div class="subfilters" aria-label="Expertise thuisverpleging">
+    <label><input type="checkbox"> Algemene zorg & medicatie</label>
+    <label><input type="checkbox"> Expert wondzorg</label>
+    <label><input type="checkbox"> Palliatieve thuiszorg</label>
+    <label><input type="checkbox"> OPAT</label>
+    <label><input type="checkbox"> Diabeteseducatie</label>
+    <label><input type="checkbox"> TPN / PICC</label>
+  </div>
+</div>
     <section class="grid" aria-label="Aanbieders">
       <!-- Sarah (met expliciet verpleegkundige foto) -->
       <article class="card">

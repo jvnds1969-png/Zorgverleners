@@ -1,0 +1,22 @@
+[
+  {
+    "id": "prov_001",
+    "display_name": "Sarah Peeters",
+    "type": "thuisverpleging",
+    "photo": "images/providers/sarah.jpg",
+    "badge": "Onmiddellijk beschikbaar",
+    "languages": ["NL", "FR"],
+    "postcodes": ["2000", "2018"],
+    "pricing": "Geconventioneerd"
+  },
+  {
+    "id": "prov_002",
+    "display_name": "Mohamed El Amrani",
+    "type": "kinesitherapie",
+    "photo": "images/providers/mohamed.jpg",
+    "badge": "Komt aan huis",
+    "languages": ["NL", "AR"],
+    "postcodes": ["2100", "2140"],
+    "pricing": "Niet geconventioneerd"
+  }
+]

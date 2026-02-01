@@ -2,21 +2,46 @@
   {
     "id": "prov_001",
     "display_name": "Sarah Peeters",
-    "type": "thuisverpleging",
-    "photo": "images/providers/sarah.jpg",
-    "badge": "Onmiddellijk beschikbaar",
+    "types": ["thuisverpleging"],
+    "verified": true,
+    "rating": 4.9,
+    "reviews": 127,
+    "role": "Thuisverpleegkundige • 10 jaar",
     "languages": ["NL", "FR"],
-    "postcodes": ["2000", "2018"],
-    "pricing": "Geconventioneerd"
+    "pricing": "Geconventioneerd",
+    "coverage": { "postcodes": ["2000", "2018"], "start": "immediately", "capacity": "available" },
+    "specialties": { "thuisverpleging": { "expertises": ["algemene zorg", "palliatief", "opat"] } },
+    "media": { "logo": "images/logos/altrio.svg" },
+    "card": {
+      "badge_right": "Onmiddellijk beschikbaar",
+      "short_pitch": "Onmiddellijke opstart mogelijk",
+      "chips": ["Algemene zorg", "Palliatief", "OPAT"]
+    }
   },
   {
     "id": "prov_002",
     "display_name": "Mohamed El Amrani",
-    "type": "kinesitherapie",
-    "photo": "images/providers/mohamed.jpg",
-    "badge": "Komt aan huis",
-    "languages": ["NL", "AR"],
-    "postcodes": ["2100", "2140"],
-    "pricing": "Niet geconventioneerd"
+    "types": ["kinesitherapie"],
+    "verified": true,
+    "rating": 4.8,
+    "reviews": 89,
+    "role": "Kinesitherapeut • 7 jaar",
+    "languages": ["AR", "NL"],
+    "pricing": "Niet geconventioneerd",
+    "coverage": { "postcodes": ["2100", "2140"], "start": "op afspraak" },
+    "card": { "badge_right": "Komt aan huis" }
+  },
+  {
+    "id": "prov_003",
+    "display_name": "Delimeal",
+    "types": ["warme maaltijden"],
+    "verified": true,
+    "rating": 5.0,
+    "reviews": 23,
+    "role": "Warme maaltijd aan huis",
+    "languages": ["NL", "PL"],
+    "pricing": "Dagelijkse leveringen",
+    "coverage": { "postcodes": ["2000", "9000"], "start": "immediately" },
+    "card": { "badge_right": "Nieuw" }
   }
 ]

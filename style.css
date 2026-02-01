@@ -376,3 +376,16 @@ header {
   color:var(--brand);
   transform:translateX(-2px);
 }
+.subfilters{
+  margin-left:1.2rem;
+  margin-top:.6rem;
+  padding-left:.8rem;
+  border-left:2px solid #f0f0f0;
+  display:grid;
+  gap:.35rem;
+}
+
+.subfilters label{
+  font-size:.9rem;
+  color:#444;
+}

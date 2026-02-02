@@ -43,5 +43,45 @@
     "pricing": "Dagelijkse leveringen",
     "coverage": { "postcodes": ["2000", "9000"], "start": "immediately" },
     "card": { "badge_right": "Nieuw" }
+  },
+  {
+    "id": "prov_004",
+    "display_name": "Dienst gezinszorg Ferm",
+    "types": ["gezinszorg"],
+    "verified": true,
+    "rating": 4.7,
+    "reviews": 45,
+    "role": "Gezinszorg aan huis",
+    "languages": ["NL"],
+    "pricing": "Uurtarief",
+    "coverage": { "postcodes": ["2200", "2300", "2400"], "start": "op afspraak" },
+    "card": { "badge_right": "Uurtarief" }
+  },
+  {
+    "id": "prov_005",
+    "display_name": "ESK",
+    "types": ["elektriciteit"],
+    "verified": true,
+    "rating": 4.6,
+    "reviews": 32,
+    "role": "Kleine electriciteitsaanpassingen",
+    "languages": ["NL"],
+    "pricing": "Offerte",
+    "coverage": { "postcodes": ["2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900"], "start": "op afspraak", "region": "Provincie Antwerpen" },
+    "card": { "badge_right": "Offerte" }
+  },
+  {
+    "id": "prov_006",
+    "display_name": "Ispahan",
+    "types": ["palliatieve zorg"],
+    "verified": true,
+    "rating": 4.9,
+    "reviews": 78,
+    "role": "Palliatieve thuiszorgequipe Turnhout",
+    "languages": ["NL"],
+    "pricing": "Geconventioneerd",
+    "coverage": { "postcodes": ["2300", "2350", "2360"], "start": "immediately", "region": "Turnhout" },
+    "specialties": { "palliatieve zorg": { "expertises": ["palliatieve expertise", "terminale zorg"] } },
+    "card": { "badge_right": "Palliatieve expertise" }
   }
 ]

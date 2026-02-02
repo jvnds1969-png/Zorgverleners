@@ -1,46 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* ==================================================
-   Zorgstart Marketplace – FINAL CSS
-   stabiel · consistent · responsive
+   Zorgstart Marketplace — Unified (Nurseline look & feel)
+   behoudt je bestaande classnamen (geen HTML-breuk)
    ================================================== */
 
 :root{
   --brand:#ff385c;
   --brand-dark:#e61e4d;
+  --brand-soft:#fff1f3;
 
-  --bg:#f7f7f7;
-  --card:#ffffff;
-  --text:#222;
-  --muted:#717171;
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --surface-2:#f1f5f9;
 
-  --radius:18px;
-  --shadow-sm:0 2px 10px rgba(0,0,0,.10);
-  --shadow-lg:0 16px 34px rgba(0,0,0,.16);
+  --text:#0f172a;
+  --muted:#64748b;
+  --muted-2:#94a3b8;
+
+  --border:#e2e8f0;
+
+  --shadow:0 1px 3px rgba(0,0,0,0.10);
+  --shadow-strong:0 10px 40px rgba(0,0,0,0.12);
+
+  --r-sm:10px;
+  --r-md:12px;
+  --r-lg:16px;
+
+  --focus:0 0 0 3px rgba(255,56,92,0.15);
+
+  --max:1400px;
 }
 
 /* ---------- Reset ---------- */
-*{
+*,
+*::before,
+*::after{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
+html{scroll-behavior:smooth}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:'Inter', system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.35;
+  line-height:1.6;
 }
 
-/* ---------- Header ---------- */
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:none;background:none;cursor:pointer}
+
+/* ==================================================
+   Header
+   ================================================== */
+
 header{
-  background:var(--brand);
+  background:linear-gradient(135deg, #0f172a, #1f2937);
   color:#fff;
   padding:1rem 1.25rem;
-  box-shadow:0 2px 10px rgba(0,0,0,.12);
+  box-shadow:var(--shadow);
+  border-bottom:1px solid rgba(148,163,184,0.25);
 }
 
 .container{
-  max-width:1400px;
+  max-width:var(--max);
   margin:0 auto;
   display:flex;
   align-items:center;
@@ -49,6 +76,7 @@ header{
   flex-wrap:wrap;
 }
 
+/* Logo */
 .logo{
   display:flex;
   flex-direction:column;
@@ -56,19 +84,22 @@ header{
 }
 
 .logo-text{
-  font-size:2rem;
+  font-size:1.9rem;
   font-weight:900;
   letter-spacing:-.02em;
 }
 
 .marketplace{
   margin-top:2px;
-  font-size:.7rem;
-  letter-spacing:.08em;
+  font-size:.72rem;
+  letter-spacing:.10em;
   text-transform:uppercase;
   opacity:.9;
+  color:#cbd5e1;
+  font-weight:700;
 }
 
+/* Header actions */
 .header-actions{
   display:flex;
   align-items:center;
@@ -78,46 +109,56 @@ header{
 }
 
 .lang-pill{
-  background:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(148,163,184,0.45);
   padding:.5rem .75rem;
   border-radius:999px;
   font-weight:800;
   font-size:.85rem;
   white-space:nowrap;
+  color:#e5e7eb;
 }
 
+/* Button "host" = Nurseline primary */
 .btn-host{
-  background:#fff;
-  color:var(--brand);
-  border:0;
-  padding:.7rem 1.25rem;
+  background:var(--brand);
+  color:#fff;
+  padding:.7rem 1.2rem;
   border-radius:999px;
   font-weight:900;
   cursor:pointer;
-  box-shadow:0 6px 16px rgba(0,0,0,.14);
-  transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 10px 22px rgba(255,56,92,0.20);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
 
 .btn-host:hover{
+  background:var(--brand-dark);
   transform:translateY(-1px);
-  box-shadow:0 10px 22px rgba(0,0,0,.18);
+  box-shadow:0 14px 28px rgba(255,56,92,0.26);
 }
 
-/* ---------- Hero ---------- */
+/* ==================================================
+   Hero
+   ================================================== */
+
 .hero{
-  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
+  background:linear-gradient(135deg, #0f172a, #1f2937);
   color:#fff;
-  padding:3rem 1rem 2.25rem;
+  padding:2.6rem 1rem 2.1rem;
   text-align:center;
+  box-shadow:var(--shadow);
 }
 
 .hero h1{
-  font-size:2.3rem;
+  font-size:2.25rem;
   letter-spacing:-.02em;
   margin-bottom:1rem;
 }
 
-/* ---------- Search ---------- */
+/* ==================================================
+   Search
+   ================================================== */
+
 .search-bar{
   max-width:920px;
   margin:0 auto;
@@ -125,46 +166,59 @@ header{
   grid-template-columns:1.2fr 1.2fr auto;
   gap:.6rem;
   padding:.6rem;
-  background:#fff;
+  background:rgba(255,255,255,0.92);
+  border:1px solid rgba(226,232,240,0.9);
   border-radius:999px;
-  box-shadow:0 14px 34px rgba(0,0,0,.14);
+  box-shadow:var(--shadow-strong);
   align-items:center;
+  backdrop-filter: blur(10px);
 }
 
 .search-bar input{
   border:0;
   outline:0;
-  padding:1rem 1rem;
+  padding:.95rem 1rem;
   border-radius:999px;
   font-size:1rem;
   background:transparent;
+  color:var(--text);
+}
+
+.search-bar input::placeholder{
+  color:var(--muted-2);
 }
 
 .search-bar input:focus{
-  background:#f3f3f3;
+  background:var(--surface-2);
+  box-shadow:var(--focus);
 }
 
+/* Primary search button */
 .btn-search{
   border:0;
   cursor:pointer;
-  padding:1rem 1.5rem;
+  padding:.95rem 1.4rem;
   border-radius:999px;
   font-weight:900;
   color:#fff;
-  background:linear-gradient(135deg,var(--brand),var(--brand-dark));
-  box-shadow:0 12px 22px rgba(255,56,92,.25);
-  transition:transform .15s ease, box-shadow .15s ease;
+  background:var(--brand);
+  box-shadow:0 10px 22px rgba(255,56,92,0.20);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
   white-space:nowrap;
 }
 
 .btn-search:hover{
+  background:var(--brand-dark);
   transform:translateY(-1px);
-  box-shadow:0 18px 30px rgba(255,56,92,.30);
+  box-shadow:0 14px 28px rgba(255,56,92,0.26);
 }
 
-/* ---------- Main layout ---------- */
+/* ==================================================
+   Main layout
+   ================================================== */
+
 main{
-  max-width:1400px;
+  max-width:var(--max);
   margin:1.75rem auto 3rem;
   padding:0 1rem;
   display:grid;
@@ -173,12 +227,16 @@ main{
   align-items:start;
 }
 
-/* ---------- Filters ---------- */
+/* ==================================================
+   Filters
+   ================================================== */
+
 .filters{
-  background:var(--card);
-  border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
   padding:1rem;
-  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  box-shadow:var(--shadow);
   position:sticky;
   top:1rem;
 }
@@ -186,17 +244,18 @@ main{
 .filters h2{
   font-size:1rem;
   margin-bottom:.75rem;
+  letter-spacing:-0.01em;
 }
 
 .filter-group{
-  border-top:1px solid #eee;
+  border-top:1px solid var(--border);
   margin-top:.75rem;
   padding-top:.75rem;
 }
 
 .filter-group h3{
   font-size:.9rem;
-  color:#333;
+  color:var(--text);
   margin-bottom:.5rem;
 }
 
@@ -206,10 +265,11 @@ main{
   gap:.5rem;
   margin:.45rem 0;
   font-size:.9rem;
-  color:#444;
+  color:var(--muted);
   cursor:pointer;
 }
 
+/* Checkbox accent = brand */
 input[type="checkbox"]{
   accent-color:var(--brand);
 }
@@ -218,7 +278,7 @@ input[type="checkbox"]{
 .subfilters{
   margin:.5rem 0 0 1.25rem;
   padding-left:.75rem;
-  border-left:2px solid #f0f0f0;
+  border-left:2px solid var(--border);
   display:grid;
   gap:.3rem;
 }
@@ -228,32 +288,39 @@ input[type="checkbox"]{
   pointer-events:none;
 }
 
-/* ---------- Listings ---------- */
+/* ==================================================
+   Listings
+   ================================================== */
+
 .listings{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
   gap:1rem;
 }
 
-/* ---------- Card ---------- */
+/* ==================================================
+   Card
+   ================================================== */
+
 .card{
-  background:var(--card);
-  border-radius:var(--radius);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
   overflow:hidden;
-  box-shadow:var(--shadow-sm);
-  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:var(--shadow);
+  transition:transform .18s ease, box-shadow .18s ease;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-lg);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-strong);
 }
 
 .card-img{
   height:210px;
   position:relative;
   overflow:hidden;
-  background:#eaeaea;
+  background:var(--surface-2);
 }
 
 .card-img img:not(.group-logo){
@@ -276,9 +343,9 @@ input[type="checkbox"]{
   inset:0;
   background:linear-gradient(
     180deg,
-    rgba(0,0,0,.32) 0%,
-    rgba(0,0,0,.12) 45%,
-    rgba(0,0,0,0) 70%
+    rgba(0,0,0,.30) 0%,
+    rgba(0,0,0,.10) 45%,
+    rgba(0,0,0,0) 72%
   );
   pointer-events:none;
 }
@@ -289,12 +356,13 @@ input[type="checkbox"]{
   top:12px;
   left:12px;
   background:rgba(255,255,255,.92);
-  color:#0f8f66;
+  color:#059669;
   padding:.4rem .7rem;
   border-radius:999px;
   font-size:.75rem;
   font-weight:900;
-  box-shadow:0 2px 8px rgba(0,0,0,.18);
+  border:1px solid rgba(226,232,240,0.9);
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
   z-index:3;
 }
 
@@ -308,12 +376,12 @@ input[type="checkbox"]{
   border-radius:999px;
   font-size:.75rem;
   font-weight:900;
-  box-shadow:0 2px 8px rgba(0,0,0,.18);
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
   z-index:3;
 }
 
 .badge-right.badge-new{
-  background:rgba(0,166,153,.95);
+  background:rgba(16,185,129,.95);
 }
 
 /* Chips */
@@ -335,7 +403,8 @@ input[type="checkbox"]{
   border-radius:999px;
   font-size:.72rem;
   font-weight:900;
-  box-shadow:0 2px 8px rgba(0,0,0,.18);
+  border:1px solid rgba(226,232,240,0.9);
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
   white-space:nowrap;
 }
 
@@ -348,7 +417,8 @@ input[type="checkbox"]{
   background:rgba(255,255,255,.95);
   padding:.3rem .45rem;
   border-radius:10px;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
+  border:1px solid rgba(226,232,240,0.9);
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
   z-index:4;
 }
 
@@ -358,8 +428,9 @@ input[type="checkbox"]{
 }
 
 .card-content h3{
-  font-size:1.1rem;
+  font-size:1.08rem;
   margin-bottom:.25rem;
+  letter-spacing:-0.01em;
 }
 
 .meta{
@@ -377,25 +448,27 @@ input[type="checkbox"]{
   display:flex;
   gap:.5rem;
   flex-wrap:wrap;
-  margin-top:.5rem;
+  margin-top:.55rem;
 }
 
 .tags span{
-  background:#f3f3f3;
+  background:var(--surface-2);
+  border:1px solid var(--border);
   padding:.3rem .6rem;
   border-radius:999px;
   font-size:.75rem;
   font-weight:900;
+  color:var(--muted);
 }
 
-/* Footer */
+/* Footer of card */
 .footer{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:.75rem;
   padding:.75rem 1rem;
-  border-top:1px solid #eee;
+  border-top:1px solid var(--border);
 }
 
 .price{
@@ -403,22 +476,29 @@ input[type="checkbox"]{
   white-space:nowrap;
 }
 
+/* CTA button in card */
 .btn-cta{
   border:0;
   background:var(--brand);
   color:#fff;
   padding:.55rem .9rem;
-  border-radius:10px;
+  border-radius:var(--r-sm);
   font-weight:900;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(255,56,92,.22);
+  box-shadow:0 10px 22px rgba(255,56,92,0.20);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
 
 .btn-cta:hover{
+  background:var(--brand-dark);
   transform:translateY(-1px);
+  box-shadow:0 14px 28px rgba(255,56,92,0.26);
 }
 
-/* ---------- Responsive ---------- */
+/* ==================================================
+   Responsive
+   ================================================== */
+
 @media (max-width:980px){
   main{grid-template-columns:1fr}
   .filters{position:relative;top:auto}
@@ -429,12 +509,12 @@ input[type="checkbox"]{
 
   .search-bar{
     grid-template-columns:1fr;
-    border-radius:18px;
+    border-radius:var(--r-lg);
   }
 
   .btn-search{
     width:100%;
-    border-radius:14px;
+    border-radius:var(--r-md);
   }
 
   .listings{grid-template-columns:1fr}
